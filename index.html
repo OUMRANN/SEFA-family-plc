@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SEFA & Family PLC — Trusted Auto Repair & Tyre Service, Addis Ababa</title>
+<meta name="description" content="SEFA & Family PLC has kept Addis Ababa moving for three generations. Foreign & domestic auto repair, precision tyre service, and honest, family-run craftsmanship since 1991.">
+<meta name="theme-color" content="#121316">
+
+<!-- Open Graph -->
+<meta property="og:title" content="SEFA & Family PLC — Trusted Auto Repair & Tyre Service">
+<meta property="og:description" content="Three generations. One family. Every mile. Foreign & domestic auto repair and tyre service in Addis Ababa.">
+<meta property="og:type" content="website">
+
+<!-- Structured Data: LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "SEFA & Family PLC",
+  "image": "https://example.com/sefa-family-workshop.jpg",
+  "priceRange": "$$",
+  "telephone": "+251-11-000-0000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bole Road",
+    "addressLocality": "Addis Ababa",
+    "addressCountry": "ET"
+  },
+  "areaServed": "Addis Ababa",
+  "founder": "SEFA Family",
+  "foundingDate": "1991",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foreign & Domestic Auto Repair" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tyre Sales & Service" } }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   SEFA & FAMILY PLC — DESIGN TOKENS
+   ============================================================ */
+:root{
+  /* Color */
+  --bg:            #121316;
+  --bg-soft:       #17191d;
+  --surface:       #1c1f24;
+  --surface-raised:#22262c;
+  --line:          rgba(237,234,226,0.09);
+  --line-strong:   rgba(237,234,226,0.16);
+  --copper:        #c17a45;
+  --copper-bright: #dd9760;
+  --copper-dim:    rgba(193,122,69,0.14);
+  --steel:         #8b95a1;
+  --ivory:         #edeae2;
+  --ivory-dim:     #a7a6a0;
+  --ivory-faint:   #6f6f6c;
+  --success:       #6b8f71;
+
+  /* Type */
+  --f-display: 'Bodoni Moda', 'Times New Roman', serif;
+  --f-body:    'Inter', -apple-system, sans-serif;
+  --f-mono:    'JetBrains Mono', monospace;
+
+  /* Scale */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-1:  clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --step-2:  clamp(1.7rem, 1.5rem + 1vw, 2.25rem);
+  --step-3:  clamp(2.3rem, 1.9rem + 2vw, 3.5rem);
+  --step-4:  clamp(3rem, 2.3rem + 3.5vw, 5.5rem);
+
+  /* Space */
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+  --section-y: clamp(5rem, 12vw, 9rem);
+
+  /* Motion */
+  --ease-out:    cubic-bezier(.16,.8,.24,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --dur-fast:    220ms;
+  --dur-med:     520ms;
+  --dur-slow:    1100ms;
+}
+
+@media (prefers-color-scheme: light){ :root{ /* brand stays dark-first by design */ } }
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+body{
+  margin:0; background:var(--bg); color:var(--ivory);
+  font-family:var(--f-body); font-weight:400; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3,p{ margin:0; }
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+
+::selection{ background:var(--copper); color:var(--bg); }
+
+:focus-visible{ outline:2px solid var(--copper-bright); outline-offset:4px; border-radius:2px; }
+
+.skip-link{
+  position:absolute; left:1rem; top:-4rem; background:var(--copper); color:var(--bg);
+  padding:.75rem 1.25rem; border-radius:4px; z-index:200; transition:top var(--dur-fast) var(--ease-out);
+  font-family:var(--f-mono); font-size:var(--step--1);
+}
+.skip-link:focus{ top:1rem; }
+
+.wrap{ max-width:1280px; margin-inline:auto; padding-inline:var(--gutter); }
+.eyebrow{
+  font-family:var(--f-mono); font-size:var(--step--1); letter-spacing:.14em; text-transform:uppercase;
+  color:var(--copper-bright); display:flex; align-items:center; gap:.7em;
+}
+.eyebrow::before{ content:''; width:28px; height:1px; background:var(--copper); display:inline-block; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:100; display:flex; align-items:center; justify-content:space-between;
+  padding:1.1rem var(--gutter); backdrop-filter:blur(0px); transition:background var(--dur-med) var(--ease-out), backdrop-filter var(--dur-med) var(--ease-out), padding var(--dur-med) var(--ease-out);
+}
+.nav.is-scrolled{ background:rgba(18,19,22,0.78); backdrop-filter:blur(14px); padding-block:.8rem; border-bottom:1px solid var(--line); }
+.nav__mark{ font-family:var(--f-display); font-size:1.3rem; letter-spacing:.02em; }
+.nav__mark em{ font-style:italic; color:var(--copper-bright); }
+.nav__links{ display:none; gap:2.4rem; font-size:var(--step--1); color:var(--ivory-dim); }
+.nav__links a{ transition:color var(--dur-fast) var(--ease-out); position:relative; }
+.nav__links a:hover{ color:var(--ivory); }
+.nav__cta{
+  font-family:var(--f-mono); font-size:var(--step--1); border:1px solid var(--line-strong);
+  padding:.6rem 1.2rem; border-radius:100px; display:inline-flex; align-items:center; gap:.5em;
+  transition:border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.nav__cta:hover{ border-color:var(--copper); background:var(--copper-dim); }
+@media (min-width:900px){ .nav__links{ display:flex; } }
+
+/* ============================================================
+   HERO — layered parallax + garage-door reveal
+   ============================================================ */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:flex-end;
+  overflow:clip; perspective:1400px; background:
+    radial-gradient(120% 90% at 50% -10%, #22252b 0%, var(--bg) 55%);
+}
+.hero__scene{
+  position:absolute; inset:0; transform-style:preserve-3d; will-change:transform;
+}
+/* Layer: workshop light glow */
+.hero__glow{
+  position:absolute; left:50%; top:38%; width:140vw; height:140vw; max-width:1400px; max-height:1400px;
+  transform:translate(-50%,-50%) translateZ(-260px); border-radius:50%;
+  background:radial-gradient(circle, rgba(193,122,69,0.16) 0%, rgba(193,122,69,0) 62%);
+  filter:blur(4px);
+}
+/* Layer: horizon line grid, evokes garage floor perspective */
+.hero__floor{
+  position:absolute; left:0; right:0; bottom:0; height:46%; transform:translateZ(-140px) scale(1.15);
+  background:
+    linear-gradient(to top, rgba(237,234,226,0.05), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(237,234,226,0.05) 0 1px, transparent 1px 80px);
+  mask-image:linear-gradient(to top, black 0%, transparent 95%);
+}
+/* Layer: silhouette — swap for real vehicle photography (WebP, lazy) */
+.hero__silhouette{
+  position:absolute; left:50%; bottom:0; width:min(120vw,1200px); transform:translate(-50%,4%) translateZ(-60px);
+  opacity:.9;
+}
+/* Layer: the "garage door" — slats that lift on load to reveal the hero, echoing a literal bay door */
+.hero__door{
+  position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; pointer-events:none;
+}
+.hero__slat{
+  flex:1; background:linear-gradient(180deg, #1a1c20, #101114);
+  border-bottom:1px solid rgba(0,0,0,0.35);
+  transform:translateY(0); transition:transform 900ms var(--ease-in-out);
+}
+.hero.is-open .hero__slat{ transform:translateY(-100%); }
+
+.hero__content{ position:relative; z-index:10; width:100%; padding:0 var(--gutter) clamp(3rem,8vw,6rem); }
+.hero__kicker{ opacity:0; transform:translateY(14px); animation:reveal-up var(--dur-slow) var(--ease-out) 1.05s forwards; }
+.hero__title{
+  font-family:var(--f-display); font-weight:500; font-size:clamp(2.6rem, 5.5vw + 1rem, 6rem);
+  line-height:.98; max-width:16ch; letter-spacing:-.01em; margin-block:.5em .4em;
+  opacity:0; transform:translateY(22px); animation:reveal-up var(--dur-slow) var(--ease-out) 1.2s forwards;
+}
+.hero__title i{ font-style:italic; color:var(--copper-bright); }
+.hero__sub{
+  font-size:var(--step-0); color:var(--ivory-dim); max-width:46ch; margin-bottom:2.2rem;
+  opacity:0; transform:translateY(18px); animation:reveal-up var(--dur-slow) var(--ease-out) 1.35s forwards;
+}
+.hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; opacity:0; transform:translateY(16px); animation:reveal-up var(--dur-slow) var(--ease-out) 1.5s forwards; }
+
+@keyframes reveal-up{ to{ opacity:1; transform:translateY(0); } }
+
+.btn{
+  display:inline-flex; align-items:center; gap:.6em; padding:1rem 1.9rem; border-radius:100px;
+  font-size:var(--step--1); font-weight:500; letter-spacing:.01em; transition:transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.btn--primary{ background:var(--copper); color:#161311; }
+.btn--primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(193,122,69,0.55); background:var(--copper-bright); }
+.btn--ghost{ border:1px solid var(--line-strong); color:var(--ivory); }
+.btn--ghost:hover{ border-color:var(--steel); transform:translateY(-2px); }
+
+.hero__scroll-cue{
+  position:absolute; bottom:1.6rem; left:var(--gutter); z-index:10; display:flex; align-items:center; gap:.7rem;
+  font-family:var(--f-mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ivory-faint);
+  opacity:0; animation:reveal-up var(--dur-slow) var(--ease-out) 1.8s forwards;
+}
+.hero__scroll-cue .line{ width:1px; height:34px; background:linear-gradient(var(--ivory-faint), transparent); position:relative; overflow:hidden; }
+.hero__scroll-cue .line::after{ content:''; position:absolute; top:-34px; left:0; width:100%; height:34px; background:var(--copper-bright); animation:cue-drop 2.4s ease-in-out infinite; }
+@keyframes cue-drop{ 0%{ top:-34px; } 60%,100%{ top:34px; } }
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.trust{ border-block:1px solid var(--line); background:var(--bg-soft); }
+.trust__row{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:2.2rem 1.5rem; padding-block:2.6rem;
+}
+@media (min-width:760px){ .trust__row{ grid-template-columns:repeat(4,1fr); } }
+.trust__stat{ text-align:left; }
+.trust__num{ font-family:var(--f-display); font-size:var(--step-2); color:var(--ivory); }
+.trust__num span{ color:var(--copper-bright); }
+.trust__label{ font-size:.8rem; color:var(--ivory-faint); margin-top:.2rem; }
+
+/* ============================================================
+   SECTION shell
+   ============================================================ */
+.section{ padding-block:var(--section-y); position:relative; }
+.section__head{ max-width:44rem; margin-bottom:clamp(2.5rem,6vw,4.5rem); }
+.section__title{ font-family:var(--f-display); font-size:var(--step-3); line-height:1.05; margin-top:.6em; letter-spacing:-.01em; }
+.section__title i{ font-style:italic; color:var(--copper-bright); }
+.section__lede{ color:var(--ivory-dim); font-size:var(--step-0); max-width:36rem; margin-top:1.1rem; }
+
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   SERVICES — 3D tilt cards
+   ============================================================ */
+.services__grid{ display:grid; gap:1.4rem; grid-template-columns:1fr; }
+@media (min-width:760px){ .services__grid{ grid-template-columns:repeat(2,1fr); } }
+
+.tilt-card{
+  perspective:1200px;
+}
+.tilt-card__inner{
+  position:relative; padding:2.4rem clamp(1.6rem,3vw,2.4rem); border-radius:22px; background:var(--surface);
+  border:1px solid var(--line); min-height:340px; display:flex; flex-direction:column; justify-content:flex-end;
+  transform-style:preserve-3d; transition:transform 260ms var(--ease-out), border-color var(--dur-fast) var(--ease-out), background 260ms var(--ease-out);
+  overflow:hidden;
+}
+.tilt-card__inner::before{
+  content:''; position:absolute; inset:0; opacity:0; transition:opacity var(--dur-med) var(--ease-out);
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(193,122,69,0.16), transparent 60%);
+}
+.tilt-card:hover .tilt-card__inner::before{ opacity:1; }
+.tilt-card:hover .tilt-card__inner{ border-color:var(--line-strong); background:var(--surface-raised); }
+.tilt-card__icon{ width:52px; height:52px; margin-bottom:1.6rem; transform:translateZ(40px); color:var(--copper-bright); }
+.tilt-card__title{ font-family:var(--f-display); font-size:var(--step-1); transform:translateZ(30px); margin-bottom:.6rem; }
+.tilt-card__desc{ color:var(--ivory-dim); font-size:var(--step--1); max-width:34ch; transform:translateZ(20px); }
+.tilt-card__tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.4rem; transform:translateZ(20px); }
+.tilt-card__tags span{
+  font-family:var(--f-mono); font-size:.7rem; letter-spacing:.04em; color:var(--steel);
+  border:1px solid var(--line-strong); padding:.32rem .7rem; border-radius:100px;
+}
+
+/* ============================================================
+   HERITAGE — scroll dolly
+   ============================================================ */
+.heritage{ background:var(--bg-soft); border-block:1px solid var(--line); overflow:clip; }
+.heritage__layout{ display:grid; gap:3rem; }
+@media (min-width:940px){ .heritage__layout{ grid-template-columns:.9fr 1.1fr; align-items:center; } }
+
+.dolly{ position:relative; aspect-ratio:4/5; border-radius:26px; overflow:hidden; perspective:1000px; background:#0e0f11; }
+.dolly__frame{
+  position:absolute; inset:0; transform-style:preserve-3d; will-change:transform;
+  background:
+    radial-gradient(120% 100% at 30% 10%, #262a30 0%, #0e0f11 60%);
+}
+/* Concentric plaques evoke a brass heritage seal — swap center silhouette for real archival photo */
+.dolly__ring{ position:absolute; border:1px solid var(--line-strong); border-radius:50%; }
+.dolly__ring--1{ inset:8%; transform:translateZ(-40px); }
+.dolly__ring--2{ inset:20%; border-color:var(--line); transform:translateZ(-90px); }
+.dolly__ring--3{ inset:32%; border-color:rgba(193,122,69,0.35); transform:translateZ(-10px); }
+.dolly__seal{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.4rem;
+  transform:translateZ(40px);
+}
+.dolly__seal .est{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.2em; color:var(--copper-bright); }
+.dolly__seal .yr{ font-family:var(--f-display); font-size:clamp(2.6rem,6vw,4rem); }
+.dolly__seal .fam{ font-family:var(--f-mono); font-size:.7rem; letter-spacing:.16em; color:var(--ivory-faint); text-transform:uppercase; }
+
+.timeline{ display:flex; flex-direction:column; }
+.timeline__item{
+  display:grid; grid-template-columns:auto 1fr; gap:1.4rem; padding-block:1.5rem;
+  border-top:1px solid var(--line);
+}
+.timeline__item:last-child{ border-bottom:1px solid var(--line); }
+.timeline__year{ font-family:var(--f-mono); font-size:var(--step--1); color:var(--copper-bright); padding-top:.15rem; }
+.timeline__title{ font-family:var(--f-display); font-size:var(--step-1); margin-bottom:.35rem; }
+.timeline__desc{ color:var(--ivory-dim); font-size:var(--step--1); max-width:48ch; }
+
+/* ============================================================
+   TESTIMONIALS — marquee, pausable
+   ============================================================ */
+.testimonials{ padding-block:var(--section-y); }
+.marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.marquee__track{ display:flex; gap:1.4rem; width:max-content; animation:marquee 42s linear infinite; }
+.marquee:hover .marquee__track, .marquee:focus-within .marquee__track{ animation-play-state:paused; }
+@keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+.quote-card{
+  width:min(80vw,380px); flex:none; background:var(--surface); border:1px solid var(--line); border-radius:20px;
+  padding:2rem; display:flex; flex-direction:column; gap:1.2rem;
+}
+.quote-card__stars{ color:var(--copper-bright); font-size:.9rem; letter-spacing:.2em; }
+.quote-card__text{ font-size:var(--step-0); line-height:1.55; color:var(--ivory); }
+.quote-card__who{ display:flex; align-items:center; gap:.8rem; margin-top:auto; }
+.quote-card__avatar{
+  width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--copper),#7a4f2c);
+  display:flex; align-items:center; justify-content:center; font-family:var(--f-mono); font-size:.75rem; color:#161311; flex:none;
+}
+.quote-card__name{ font-size:.85rem; }
+.quote-card__meta{ font-size:.75rem; color:var(--ivory-faint); font-family:var(--f-mono); }
+
+/* ============================================================
+   CTA BAND
+   ============================================================ */
+.cta-band{
+  margin-inline:var(--gutter); border-radius:28px; padding:clamp(2.6rem,6vw,4.5rem);
+  background:
+    radial-gradient(120% 160% at 100% 0%, rgba(193,122,69,0.22), transparent 60%),
+    var(--surface);
+  border:1px solid var(--line-strong);
+  display:flex; flex-direction:column; gap:2rem; align-items:flex-start;
+}
+@media (min-width:820px){ .cta-band{ flex-direction:row; align-items:center; justify-content:space-between; } }
+.cta-band__title{ font-family:var(--f-display); font-size:var(--step-2); max-width:16ch; }
+.cta-band__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); border-top:1px solid var(--line); }
+.foot__grid{ display:grid; gap:2.4rem; grid-template-columns:1fr; }
+@media (min-width:760px){ .foot__grid{ grid-template-columns:1.4fr 1fr 1fr 1fr; } }
+.foot__mark{ font-family:var(--f-display); font-size:1.5rem; margin-bottom:.8rem; }
+.foot__mark em{ font-style:italic; color:var(--copper-bright); }
+.foot__desc{ color:var(--ivory-faint); font-size:var(--step--1); max-width:32ch; }
+.foot__heading{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ivory-faint); margin-bottom:1rem; }
+.foot__links{ display:flex; flex-direction:column; gap:.65rem; font-size:var(--step--1); color:var(--ivory-dim); }
+.foot__links a:hover{ color:var(--copper-bright); }
+.foot__bottom{ margin-top:3rem; padding-top:1.6rem; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; font-size:.75rem; color:var(--ivory-faint); font-family:var(--f-mono); }
+
+/* ============================================================
+   Sticky call button (mobile conversion)
+   ============================================================ */
+.sticky-cta{
+  position:fixed; left:50%; bottom:1.1rem; transform:translateX(-50%); z-index:90;
+  display:flex; gap:.6rem; background:rgba(28,31,36,0.9); backdrop-filter:blur(12px);
+  border:1px solid var(--line-strong); padding:.55rem; border-radius:100px; box-shadow:0 18px 40px -18px rgba(0,0,0,0.6);
+}
+.sticky-cta a{ font-size:.82rem; padding:.65rem 1.1rem; border-radius:100px; display:flex; align-items:center; gap:.4rem; }
+.sticky-cta a.call{ background:var(--copper); color:#161311; }
+@media (min-width:900px){ .sticky-cta{ display:none; } }
+
+.visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <a href="#main" class="nav__mark">SEFA <em>&</em> Family</a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#services">Services</a>
+    <a href="#heritage">Our Story</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Visit Us</a>
+  </nav>
+  <a class="nav__cta" href="tel:+251110000000">Call the Shop</a>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="hero__scene" id="heroScene">
+      <div class="hero__glow"></div>
+      <div class="hero__floor"></div>
+      <!-- IMAGE SWAP POINT: replace with real vehicle silhouette photo/PNG, lazy-loaded -->
+      <svg class="hero__silhouette" viewBox="0 0 900 260" fill="none" aria-hidden="true">
+        <ellipse cx="450" cy="235" rx="380" ry="18" fill="rgba(0,0,0,0.45)"/>
+        <path d="M120 190 C140 120 210 90 300 88 L360 60 C400 40 520 40 560 62 L630 90 C720 92 780 120 800 190 L800 200 L120 200 Z" fill="#1b1d21" stroke="rgba(237,234,226,0.14)"/>
+        <circle cx="250" cy="200" r="42" fill="#101114" stroke="rgba(237,234,226,0.2)"/>
+        <circle cx="650" cy="200" r="42" fill="#101114" stroke="rgba(237,234,226,0.2)"/>
+        <path d="M330 90 L390 62 Q470 48 545 64 L610 90 Z" fill="#232629" stroke="rgba(237,234,226,0.14)"/>
+      </svg>
+    </div>
+
+    <div class="hero__door" aria-hidden="true">
+      <div class="hero__slat"></div><div class="hero__slat"></div><div class="hero__slat"></div>
+      <div class="hero__slat"></div><div class="hero__slat"></div><div class="hero__slat"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="eyebrow hero__kicker">Est. 1991 · Addis Ababa</p>
+      <h1 class="hero__title">Three generations.<br>One family. <i>Every mile.</i></h1>
+      <p class="hero__sub">SEFA & Family has repaired, restored, and re-tyred this city's cars since before the ring road existed. Honest diagnostics, factory-trained hands, no surprises on the bill.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#contact">Book a Service</a>
+        <a class="btn btn--ghost" href="tel:+251110000000">Call the Shop →</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-cue" aria-hidden="true"><span class="line"></span>Scroll</div>
+  </section>
+
+  <!-- ============================================================
+       TRUST STRIP
+       ============================================================ -->
+  <section class="trust" aria-label="Trust indicators">
+    <div class="wrap trust__row">
+      <div class="trust__stat reveal">
+        <div class="trust__num"><span>33</span>+</div>
+        <div class="trust__label">Years serving Addis Ababa</div>
+      </div>
+      <div class="trust__stat reveal">
+        <div class="trust__num"><span>3</span> gen.</div>
+        <div class="trust__label">Family hands on every job</div>
+      </div>
+      <div class="trust__stat reveal">
+        <div class="trust__num"><span>40</span>k+</div>
+        <div class="trust__label">Vehicles serviced to date</div>
+      </div>
+      <div class="trust__stat reveal">
+        <div class="trust__num"><span>12</span> mo.</div>
+        <div class="trust__label">Workmanship guarantee</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section class="section" id="services" aria-label="Our services">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="eyebrow">What We Do</p>
+        <h2 class="section__title">Two crafts. <i>One standard.</i></h2>
+        <p class="section__lede">Whether it's a German sedan or a Japanese pickup, the diagnosis is the same: tell the truth, fix it right, and put good rubber underneath it.</p>
+      </div>
+
+      <div class="services__grid">
+        <article class="tilt-card reveal">
+          <div class="tilt-card__inner" data-tilt>
+            <svg class="tilt-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M8 30h32M12 30l3-11a4 4 0 0 1 3.8-2.8h10.4A4 4 0 0 1 33 19l3 11" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="15" cy="34" r="4"/><circle cx="33" cy="34" r="4"/>
+              <path d="M20 22h8" stroke-linecap="round"/>
+            </svg>
+            <h3 class="tilt-card__title">Foreign & Domestic Auto Repair</h3>
+            <p class="tilt-card__desc">Full diagnostics, engine & transmission work, electrical systems, and scheduled maintenance — for imported and locally assembled vehicles alike.</p>
+            <div class="tilt-card__tags"><span>Diagnostics</span><span>Engine</span><span>Electrical</span><span>Brakes</span></div>
+          </div>
+        </article>
+
+        <article class="tilt-card reveal">
+          <div class="tilt-card__inner" data-tilt>
+            <svg class="tilt-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="5.5"/>
+              <path d="M24 8v6M24 34v6M8 24h6M34 24h6M13 13l4.3 4.3M30.7 30.7 35 35M13 35l4.3-4.3M30.7 17.3 35 13" stroke-linecap="round"/>
+            </svg>
+            <h3 class="tilt-card__title">Tyre Sales & Service</h3>
+            <p class="tilt-card__desc">Balancing, alignment, rotation, and a stocked floor of trusted brands sized for sedans, SUVs, and light commercial fleets.</p>
+            <div class="tilt-card__tags"><span>Alignment</span><span>Balancing</span><span>Fleet Stock</span><span>Emergency Fit</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HERITAGE — scroll dolly
+       ============================================================ -->
+  <section class="heritage" id="heritage" aria-label="Our history">
+    <div class="wrap section">
+      <div class="heritage__layout">
+
+        <div class="dolly reveal" id="dolly">
+          <div class="dolly__frame" id="dollyFrame">
+            <div class="dolly__ring dolly__ring--1"></div>
+            <div class="dolly__ring dolly__ring--2"></div>
+            <div class="dolly__ring dolly__ring--3"></div>
+            <div class="dolly__seal">
+              <span class="est">ESTABLISHED</span>
+              <span class="yr">1991</span>
+              <span class="fam">SEFA Family Workshop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="section__title" style="margin-top:.5em;">Built on trust, <i>passed down by hand.</i></h2>
+          <div class="timeline" style="margin-top:2.2rem;">
+            <div class="timeline__item">
+              <span class="timeline__year">1991</span>
+              <div>
+                <h3 class="timeline__title">A single bay on Bole Road</h3>
+                <p class="timeline__desc">Founder Ato Sefa opens a two-lift garage, repairing government fleet vehicles by day and teaching his sons by lamplight.</p>
+              </div>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2004</span>
+              <div>
+                <h3 class="timeline__title">Second generation, second bay</h3>
+                <p class="timeline__desc">The workshop expands to full diagnostics and adds a dedicated tyre floor as Addis Ababa's import market grows.</p>
+              </div>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2026</span>
+              <div>
+                <h3 class="timeline__title">Third generation, same standard</h3>
+                <p class="timeline__desc">Today the grandchildren run day-to-day operations — same family, same guarantee, modern equipment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="testimonials" id="testimonials" aria-label="Customer testimonials">
+    <div class="wrap section__head reveal">
+      <p class="eyebrow">Word Of Mouth</p>
+      <h2 class="section__title">Trusted by <i>three generations of drivers.</i></h2>
+    </div>
+
+    <div class="marquee" role="region" aria-label="Customer testimonials, auto-scrolling">
+      <div class="marquee__track" id="marqueeTrack">
+        <!-- set A -->
+        <figure class="quote-card">
+          <div class="quote-card__stars" aria-hidden="true">★★★★★</div>
+          <blockquote class="quote-card__text">They found the real issue in twenty minutes after two other shops guessed for a week. Fair price, no upsell.</blockquote>
+          <figcaption class="quote-card__who">
+            <span class="quote-card__avatar">HB</span>
+            <span><span class="quote-card__name">Hanna B.</span><br><span class="quote-card__meta">Toyota RAV4 owner</span></span>
+          </figcaption>
+        </figure>
+        <figure class="quote-card">
+          <div class="quote-card__stars" aria-hidden="true">★★★★★</div>
+          <blockquote class="quote-card__text">My father used them, now I do too. Tyre balancing here is the best in Bole, hands down.</blockquote>
+          <figcaption class="quote-card__who">
+            <span class="quote-card__avatar">DT</span>
+            <span><span class="quote-card__name">Dawit T.</span><br><span class="quote-card__meta">Fleet manager</span></span>
+          </figcaption>
+        </figure>
+        <figure class="quote-card">
+          <div class="quote-card__stars" aria-hidden="true">★★★★★</div>
+          <blockquote class="quote-card__text">Called with a flat at 7am, had a fitted spare and an alignment check by 8:30. That's the family touch.</blockquote>
+          <figcaption class="quote-card__who">
+            <span class="quote-card__avatar">SM</span>
+            <span><span class="quote-card__name">Selam M.</span><br><span class="quote-card__meta">Honda CR-V owner</span></span>
+          </figcaption>
+        </figure>
+        <!-- set B (duplicate for seamless loop) -->
+        <figure class="quote-card" aria-hidden="true">
+          <div class="quote-card__stars">★★★★★</div>
+          <blockquote class="quote-card__text">They found the real issue in twenty minutes after two other shops guessed for a week. Fair price, no upsell.</blockquote>
+          <figcaption class="quote-card__who">
+            <span class="quote-card__avatar">HB</span>
+            <span><span class="quote-card__name">Hanna B.</span><br><span class="quote-card__meta">Toyota RAV4 owner</span></span>
+          </figcaption>
+        </figure>
+        <figure class="quote-card" aria-hidden="true">
+          <div class="quote-card__stars">★★★★★</div>
+          <blockquote class="quote-card__text">My father used them, now I do too. Tyre balancing here is the best in Bole, hands down.</blockquote>
+          <figcaption class="quote-card__who">
+            <span class="quote-card__avatar">DT</span>
+            <span><span class="quote-card__name">Dawit T.</span><br><span class="quote-card__meta">Fleet manager</span></span>
+          </figcaption>
+        </figure>
+        <figure class="quote-card" aria-hidden="true">
+          <div class="quote-card__stars">★★★★★</div>
+          <blockquote class="quote-card__text">Called with a flat at 7am, had a fitted spare and an alignment check by 8:30. That's the family touch.</blockquote>
+          <figcaption class="quote-card__who">
+            <span class="quote-card__avatar">SM</span>
+            <span><span class="quote-card__name">Selam M.</span><br><span class="quote-card__meta">Honda CR-V owner</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA BAND
+       ============================================================ -->
+  <div class="cta-band reveal" id="contact">
+    <div>
+      <p class="eyebrow">Ready When You Are</p>
+      <h2 class="cta-band__title" style="margin-top:.5em;">Bring it in — we'll tell you the truth.</h2>
+    </div>
+    <div class="cta-band__actions">
+      <a class="btn btn--primary" href="tel:+251110000000">Call +251 11 000 0000</a>
+      <a class="btn btn--ghost" href="https://wa.me/251900000000" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <div class="foot__mark">SEFA <em>&</em> Family</div>
+        <p class="foot__desc">Family-owned auto repair and tyre service in Addis Ababa since 1991. Three generations, one standard of honesty.</p>
+      </div>
+      <div>
+        <div class="foot__heading">Services</div>
+        <div class="foot__links">
+          <a href="#services">Auto Repair</a>
+          <a href="#services">Tyre Service</a>
+          <a href="#services">Fleet Accounts</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot__heading">Company</div>
+        <div class="foot__links">
+          <a href="#heritage">Our Story</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#contact">Visit Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot__heading">Visit</div>
+        <div class="foot__links">
+          <span>Bole Road, Addis Ababa</span>
+          <a href="tel:+251110000000">+251 11 000 0000</a>
+          <span>Mon–Sat · 8:00–18:00</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 SEFA & Family PLC</span>
+      <span>Built with care in Addis Ababa</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky mobile conversion bar -->
+<div class="sticky-cta" role="complementary" aria-label="Quick contact">
+  <a class="call" href="tel:+251110000000">📞 Call Now</a>
+  <a class="btn--ghost" style="border:1px solid var(--line-strong); border-radius:100px;" href="https://wa.me/251900000000" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Nav scroll state */
+  var nav = document.getElementById('nav');
+  var onScrollNav = function(){
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  document.addEventListener('scroll', onScrollNav, { passive:true });
+  onScrollNav();
+
+  /* Garage-door hero reveal on load */
+  var hero = document.getElementById('hero');
+  window.addEventListener('load', function(){
+    requestAnimationFrame(function(){ hero.classList.add('is-open'); });
+  });
+  if(reduceMotion){ hero.classList.add('is-open'); }
+
+  /* Scroll-linked hero parallax (camera dolly) — rAF-throttled, transform-only for 60fps */
+  var heroScene = document.getElementById('heroScene');
+  var ticking = false;
+  function updateHeroParallax(){
+    var y = window.scrollY;
+    var vh = window.innerHeight;
+    var progress = Math.min(y / vh, 1);
+    if(!reduceMotion){
+      heroScene.style.transform = 'translateZ(0) translateY(' + (progress*60) + 'px) scale(' + (1 + progress*0.08) + ')';
+      heroScene.style.opacity = String(1 - progress*0.6);
+    }
+    ticking = false;
+  }
+  document.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(updateHeroParallax); ticking = true; }
+  }, { passive:true });
+  updateHeroParallax();
+
+  /* Heritage dolly: rotates seal slightly as it enters/traverses viewport */
+  var dolly = document.getElementById('dolly');
+  var dollyFrame = document.getElementById('dollyFrame');
+  if(dolly && !reduceMotion){
+    var dollyTicking = false;
+    function updateDolly(){
+      var rect = dolly.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var center = rect.top + rect.height/2;
+      var progress = 1 - Math.min(Math.max(center / vh, 0), 1); // 0 -> 1 as it crosses viewport
+      var rot = (progress - 0.5) * 14; // -7deg .. 7deg
+      dollyFrame.style.transform = 'rotateY(' + rot + 'deg) rotateX(' + (rot*-0.3) + 'deg)';
+      dollyTicking = false;
+    }
+    document.addEventListener('scroll', function(){
+      if(!dollyTicking){ requestAnimationFrame(updateDolly); dollyTicking = true; }
+    }, { passive:true });
+    updateDolly();
+  }
+
+  /* Tilt cards: pointer-driven 3D tilt + glow position, desktop/precise pointers only */
+  var tiltCards = document.querySelectorAll('[data-tilt]');
+  if(window.matchMedia('(pointer: fine)').matches && !reduceMotion){
+    tiltCards.forEach(function(card){
+      var raf = null;
+      card.addEventListener('pointermove', function(e){
+        var rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        if(raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function(){
+          var rx = (py - 0.5) * -8;
+          var ry = (px - 0.5) * 10;
+          card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+          card.style.setProperty('--mx', (px*100) + '%');
+          card.style.setProperty('--my', (py*100) + '%');
+        });
+      });
+      card.addEventListener('pointerleave', function(){
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    });
+  }
+
+  /* Scroll-reveal via IntersectionObserver */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+})();
+</script>
+</body>
+</html>
