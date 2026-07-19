@@ -19,7 +19,7 @@
   "name": "SEFA & Family PLC",
   "image": "https://images.unsplash.com/photo-1606664914460-b667528c1acc?auto=format&fit=crop&w=1920&q=80",
   "priceRange": "$$",
-  "telephone": "+251-91-121-0261",
+  "telephone": "+251-92-360-1234",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Lideta Area",
@@ -30,8 +30,17 @@
   "founder": "SEFA Family",
   "foundingDate": "1991",
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foreign & Domestic Auto Repair" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tyre Sales & Service" } }
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Axle / CV Joint Repair (FWD)" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brakes: Standard or ABS" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Clutch Repair" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electric: Battery Sales and Installation" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electric: Electrical and Electronic Systems" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electric: Starting and Charging" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engine: Diagnostics and Performance" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engine: Minor Service and Repair" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Exhaust Systems" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heating and Air Conditioning" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Preventive Maintenance" } }
   ]
 }
 </script>
@@ -93,6 +102,7 @@ body{
 img,svg{ display:block; max-width:100%; }
 a{ color:inherit; text-decoration:none; }
 h1,h2,h3,p{ margin:0; }
+ul{ margin:0; padding:0; }
 button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
 ::selection{ background:var(--copper); color:var(--bg); }
 :focus-visible{ outline:2px solid var(--copper-bright); outline-offset:4px; border-radius:2px; }
@@ -129,55 +139,21 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .nav__cta:hover{ border-color:var(--copper); background:var(--copper-dim); }
 @media (min-width:900px){ .nav__links{ display:flex; } }
 
-/* ============================================================
-   HERO — image block sits flush against the text block below it.
-   Zero margin / zero padding at the seam: .hero__image-wrap has
-   no bottom spacing, .hero__content has no top spacing, so there
-   is no exposed background color between them.
-   ============================================================ */
-.hero{
-  position:relative;
-  margin:0;
-  padding:0;
-  background:var(--bg);
-}
-
+.hero{ position:relative; margin:0; padding:0; background:var(--bg); }
 .hero__image-wrap{
-  position:relative;
-  width:100%;
-  height:clamp(340px, 62vw, 680px);
-  margin:0;
-  padding:0;
-  overflow:hidden;
-  line-height:0;
-  font-size:0;
-  will-change:transform;
+  position:relative; width:100%; height:clamp(340px, 62vw, 680px);
+  margin:0; padding:0; overflow:hidden; line-height:0; font-size:0; will-change:transform;
 }
-
 .hero__image{
-  position:absolute;
-  top:-9%;
-  left:0;
-  width:100%;
-  height:118%;
-  margin:0;
-  padding:0;
-  border:0;
-  object-fit:cover;
-  object-position:center 42%;
-  will-change:transform;
-  backface-visibility:hidden;
-  transform:translate3d(0,0,0);
+  position:absolute; top:-9%; left:0; width:100%; height:118%;
+  margin:0; padding:0; border:0; object-fit:cover; object-position:center 42%;
+  will-change:transform; backface-visibility:hidden; transform:translate3d(0,0,0);
 }
-
 .hero__content{
-  position:relative;
-  z-index:2;
-  margin:0;
+  position:relative; z-index:2; margin:0;
   padding:clamp(2.4rem,6vw,4rem) var(--gutter) clamp(3rem,8vw,5rem);
   background:linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
 }
-
 .hero__kicker{ opacity:0; transform:translateY(14px); animation:reveal-up var(--dur-slow) var(--ease-out) .15s forwards; }
 .hero__title{
   font-family:var(--f-display); font-weight:500; font-size:clamp(2.4rem, 5vw + 1rem, 5.5rem);
@@ -190,7 +166,6 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   opacity:0; transform:translateY(18px); animation:reveal-up var(--dur-slow) var(--ease-out) .45s forwards;
 }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; opacity:0; transform:translateY(16px); animation:reveal-up var(--dur-slow) var(--ease-out) .6s forwards; }
-
 @keyframes reveal-up{ to{ opacity:1; transform:translateY(0); } }
 
 .btn{
@@ -218,6 +193,27 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .reveal{ opacity:0; transform:translateY(28px); transition:opacity .9s var(--ease-out), transform .9s var(--ease-out); }
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
 
+/* ============================================================
+   MISSION — short, spaced, minimalist lines. One value per line.
+   ============================================================ */
+.mission{ border-bottom:1px solid var(--line); }
+.mission__grid{ display:grid; gap:2.4rem; }
+@media (min-width:820px){ .mission__grid{ grid-template-columns:.55fr 1fr; gap:3.5rem; align-items:start; } }
+.mission__label{ position:sticky; top:6rem; }
+.mission__lines{ display:flex; flex-direction:column; }
+.mission__line{
+  font-family:var(--f-display); font-weight:400; font-size:var(--step-1);
+  line-height:1.35; color:var(--ivory); letter-spacing:-.005em;
+}
+.mission__line i{ font-style:italic; color:var(--copper-bright); }
+.mission__line--spaced{ margin-top:2.1rem; }
+.mission__call{
+  margin-top:2.6rem; display:inline-flex; align-items:center; gap:.6em;
+  font-family:var(--f-mono); font-size:var(--step--1); letter-spacing:.03em; color:var(--copper-bright);
+  border-bottom:1px solid var(--copper-dim); padding-bottom:.35rem; transition:opacity var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.mission__call:hover{ opacity:.75; border-color:var(--copper); }
+
 .services__grid{ display:grid; gap:1.4rem; grid-template-columns:1fr; }
 @media (min-width:760px){ .services__grid{ grid-template-columns:repeat(2,1fr); } }
 .tilt-card{ perspective:1200px; }
@@ -241,6 +237,20 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   font-family:var(--f-mono); font-size:.7rem; letter-spacing:.04em; color:var(--steel);
   border:1px solid var(--line-strong); padding:.32rem .7rem; border-radius:100px;
 }
+
+/* ============================================================
+   OUR SERVICES — clean, minimal, numbered list
+   ============================================================ */
+.our-services{ background:var(--bg-soft); border-block:1px solid var(--line); }
+.service-list{ list-style:none; display:grid; grid-template-columns:1fr; border-bottom:1px solid var(--line); }
+@media (min-width:760px){ .service-list{ grid-template-columns:1fr 1fr; column-gap:clamp(2rem,4vw,4rem); } }
+.service-list li{
+  display:flex; align-items:baseline; gap:1.3rem; padding-block:1.2rem; border-top:1px solid var(--line);
+  transition:padding-left var(--dur-fast) var(--ease-out);
+}
+.service-list li:hover{ padding-left:.4rem; }
+.service-list__num{ font-family:var(--f-mono); font-size:.7rem; letter-spacing:.06em; color:var(--copper-bright); flex:none; width:2.2ch; }
+.service-list__name{ font-family:var(--f-body); font-weight:400; font-size:var(--step-0); color:var(--ivory); }
 
 .heritage{ background:var(--bg-soft); border-block:1px solid var(--line); overflow:clip; }
 .heritage__layout{ display:grid; gap:3rem; }
@@ -328,13 +338,12 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
     <a href="#testimonials">Reviews</a>
     <a href="#contact">Visit Us</a>
   </nav>
-  <a class="nav__cta" href="tel:+251911210261">Call the Shop</a>
+  <a class="nav__cta" href="tel:+251923601234">Call the Shop</a>
 </header>
 
 <main id="main">
 
   <section class="hero" id="hero" aria-label="Introduction">
-
     <div class="hero__image-wrap" id="heroImageWrap">
       <img
         class="hero__image"
@@ -344,14 +353,13 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
         fetchpriority="high"
         decoding="async">
     </div>
-
     <div class="hero__content">
       <p class="eyebrow hero__kicker">Est. 1991 · Addis Ababa</p>
       <h1 class="hero__title">Three generations.<br>One family. <i>Every mile.</i></h1>
       <p class="hero__sub">SEFA & Family has repaired, restored, and re-tyred this city's cars since before the ring road existed. Honest diagnostics, factory-trained hands, no surprises on the bill.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#contact">Book a Service</a>
-        <a class="btn btn--ghost" href="tel:+251911210261">Call the Shop →</a>
+        <a class="btn btn--ghost" href="tel:+251923601234">Call the Shop →</a>
       </div>
     </div>
   </section>
@@ -373,6 +381,43 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
       <div class="trust__stat reveal">
         <div class="trust__num"><span>12</span> mo.</div>
         <div class="trust__label">Workmanship guarantee</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MISSION
+       ============================================================ -->
+  <section class="section mission" aria-label="Our mission">
+    <div class="wrap mission__grid">
+      <div class="mission__label reveal">
+        <p class="eyebrow">Our Mission</p>
+      </div>
+      <div class="mission__lines reveal">
+        <p class="mission__line">Care for your automobile —</p>
+        <p class="mission__line">with quality that matches</p>
+        <p class="mission__line"><i>your appreciation for value.</i></p>
+
+        <p class="mission__line mission__line--spaced">Your vehicle,</p>
+        <p class="mission__line">always in the hands</p>
+        <p class="mission__line">of a specialist.</p>
+
+        <p class="mission__line mission__line--spaced">No overpricing.</p>
+        <p class="mission__line">No guesswork.</p>
+        <p class="mission__line">No uncertainty.</p>
+
+        <p class="mission__line mission__line--spaced">Simplicity in service.</p>
+        <p class="mission__line">Unbeatable value.</p>
+
+        <p class="mission__line mission__line--spaced">The best mechanics in the business —</p>
+        <p class="mission__line">certified experts, every vehicle,</p>
+        <p class="mission__line">every time.</p>
+
+        <p class="mission__line mission__line--spaced">Finished with the latest style</p>
+        <p class="mission__line">tire rims, in designs</p>
+        <p class="mission__line">to suit any vehicle.</p>
+
+        <a class="mission__call" href="tel:+251923601234">Call +251 923 601 234 →</a>
       </div>
     </div>
   </section>
@@ -409,6 +454,31 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
           </div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OUR SERVICES — full list
+       ============================================================ -->
+  <section class="our-services" id="our-services" aria-label="Full list of services">
+    <div class="wrap section">
+      <div class="section__head reveal">
+        <p class="eyebrow">The Full List</p>
+        <h2 class="section__title">Our <i>Services.</i></h2>
+      </div>
+      <ul class="service-list reveal">
+        <li><span class="service-list__num">01</span><span class="service-list__name">Axle / CV Joint Repair (FWD)</span></li>
+        <li><span class="service-list__num">02</span><span class="service-list__name">Brakes: Standard or ABS</span></li>
+        <li><span class="service-list__num">03</span><span class="service-list__name">Clutch Repair</span></li>
+        <li><span class="service-list__num">04</span><span class="service-list__name">Electric: Battery Sales and Installation</span></li>
+        <li><span class="service-list__num">05</span><span class="service-list__name">Electric: Electrical and Electronic Systems</span></li>
+        <li><span class="service-list__num">06</span><span class="service-list__name">Electric: Starting and Charging</span></li>
+        <li><span class="service-list__num">07</span><span class="service-list__name">Engine: Diagnostics and Performance</span></li>
+        <li><span class="service-list__num">08</span><span class="service-list__name">Engine: Minor Service and Repair</span></li>
+        <li><span class="service-list__num">09</span><span class="service-list__name">Exhaust Systems</span></li>
+        <li><span class="service-list__num">10</span><span class="service-list__name">Heating and Air Conditioning</span></li>
+        <li><span class="service-list__num">11</span><span class="service-list__name">Preventive Maintenance & More</span></li>
+      </ul>
     </div>
   </section>
 
@@ -523,8 +593,8 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
       <h2 class="cta-band__title" style="margin-top:.5em;">Bring it in — expect quality you can trust.</h2>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--primary" href="tel:+251911210261">Call +251 91 121 0261</a>
-      <a class="btn btn--ghost" href="https://wa.me/251911210261" target="_blank" rel="noopener">WhatsApp Us</a>
+      <a class="btn btn--primary" href="tel:+251923601234">Call +251 923 601 234</a>
+      <a class="btn btn--ghost" href="https://wa.me/251923601234" target="_blank" rel="noopener">WhatsApp Us</a>
     </div>
   </div>
 
@@ -541,8 +611,8 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
         <div class="foot__heading">Services</div>
         <div class="foot__links">
           <a href="#services">Auto Repair</a>
+          <a href="#our-services">Full Service List</a>
           <a href="#services">Tyre Service</a>
-          <a href="#services">Fleet Accounts</a>
         </div>
       </div>
       <div>
@@ -558,7 +628,7 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
         <div class="foot__links">
           <a href="https://maps.google.com/?cid=9566532836992016605" target="_blank" rel="noopener">Lideta Area, Addis Ababa</a>
           <a href="tel:+251949535555">+251 94 953 5555</a>
-          <a href="tel:+251911210261">+251 91 121 0261</a>
+          <a href="tel:+251923601234">+251 923 601 234</a>
           <span>Mon–Sat · 8:00–18:00</span>
         </div>
       </div>
@@ -571,8 +641,8 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
 </footer>
 
 <div class="sticky-cta" role="complementary" aria-label="Quick contact">
-  <a class="call" href="tel:+251911210261">📞 Call Now</a>
-  <a class="btn--ghost" style="border:1px solid var(--line-strong); border-radius:100px;" href="https://wa.me/251911210261" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="call" href="tel:+251923601234">📞 Call Now</a>
+  <a class="btn--ghost" style="border:1px solid var(--line-strong); border-radius:100px;" href="https://wa.me/251923601234" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
 <script>
@@ -585,13 +655,9 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
   document.addEventListener('scroll', onScrollNav, { passive:true });
   onScrollNav();
 
-  /* Hero image: small transform-only float, contained inside the fixed-height
-     wrap (overflow:hidden) so the shift never exposes empty space above/below
-     the image or opens a gap before the text block. */
   var heroImageWrap = document.getElementById('heroImageWrap');
   var heroImage = document.getElementById('heroImage');
   var heroTicking = false;
-
   function updateHeroFloat(){
     var rect = heroImageWrap.getBoundingClientRect();
     var vh = window.innerHeight;
