@@ -56,6 +56,7 @@
 :root{
   --bg:            #121316;
   --bg-soft:       #17191d;
+  --slate:         #1a1c20;
   --surface:       #1c1f24;
   --surface-raised:#22262c;
   --line:          rgba(237,234,226,0.09);
@@ -63,6 +64,7 @@
   --copper:        #c17a45;
   --copper-bright: #dd9760;
   --copper-dim:    rgba(193,122,69,0.14);
+  --copper-hairline: rgba(193,122,69,0.4);
   --steel:         #8b95a1;
   --ivory:         #edeae2;
   --ivory-dim:     #a7a6a0;
@@ -194,23 +196,60 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
 
 /* ============================================================
-   MISSION — short, spaced, minimalist lines. One value per line.
+   MISSION — luxury manifesto card
+   Sits apart from the page: matte slate fill, thin bronze hairline
+   border, generous internal padding, centered refined typography.
    ============================================================ */
-.mission{ border-bottom:1px solid var(--line); }
-.mission__grid{ display:grid; gap:2.4rem; }
-@media (min-width:820px){ .mission__grid{ grid-template-columns:.55fr 1fr; gap:3.5rem; align-items:start; } }
-.mission__label{ position:sticky; top:6rem; }
-.mission__lines{ display:flex; flex-direction:column; }
+.mission{ padding-block:var(--section-y); }
+.mission__card{
+  position:relative;
+  max-width:760px;
+  margin-inline:auto;
+  background:var(--slate);
+  border:1px solid var(--copper-hairline);
+  padding:clamp(3rem,8vw,5.5rem) clamp(2rem,7vw,5rem);
+  text-align:center;
+  box-shadow:0 40px 80px -40px rgba(0,0,0,0.55);
+}
+/* fine corner marks — a restrained nod to a wax-seal / plaque frame,
+   not a full ornamental border */
+.mission__card::before,
+.mission__card::after{
+  content:'';
+  position:absolute;
+  width:18px; height:18px;
+  border:1px solid var(--copper-hairline);
+}
+.mission__card::before{ top:-1px; left:-1px; border-right:0; border-bottom:0; }
+.mission__card::after{ bottom:-1px; right:-1px; border-left:0; border-top:0; }
+
+.mission__eyebrow{
+  justify-content:center;
+  margin-bottom:clamp(1.8rem,4vw,2.6rem);
+}
+.mission__eyebrow::before{ display:none; }
+.mission__eyebrow::after{
+  content:''; width:28px; height:1px; background:var(--copper); display:inline-block;
+}
+
+.mission__lines{ display:flex; flex-direction:column; align-items:center; }
 .mission__line{
-  font-family:var(--f-display); font-weight:400; font-size:var(--step-1);
-  line-height:1.35; color:var(--ivory); letter-spacing:-.005em;
+  font-family:var(--f-display); font-weight:400; font-size:clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  line-height:1.55; color:var(--ivory); letter-spacing:.005em;
 }
 .mission__line i{ font-style:italic; color:var(--copper-bright); }
-.mission__line--spaced{ margin-top:2.1rem; }
+.mission__line--spaced{ margin-top:clamp(1.6rem,3.5vw,2.4rem); }
+
+.mission__divider{
+  width:40px; height:1px; background:var(--copper-hairline);
+  margin:clamp(2.2rem,5vw,3rem) 0;
+}
+
 .mission__call{
-  margin-top:2.6rem; display:inline-flex; align-items:center; gap:.6em;
-  font-family:var(--f-mono); font-size:var(--step--1); letter-spacing:.03em; color:var(--copper-bright);
-  border-bottom:1px solid var(--copper-dim); padding-bottom:.35rem; transition:opacity var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  display:inline-flex; align-items:center; gap:.6em;
+  font-family:var(--f-mono); font-size:var(--step--1); letter-spacing:.06em; color:var(--copper-bright);
+  border-bottom:1px solid var(--copper-dim); padding-bottom:.4rem;
+  transition:opacity var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
 .mission__call:hover{ opacity:.75; border-color:var(--copper); }
 
@@ -238,9 +277,6 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   border:1px solid var(--line-strong); padding:.32rem .7rem; border-radius:100px;
 }
 
-/* ============================================================
-   OUR SERVICES — clean, minimal, numbered list
-   ============================================================ */
 .our-services{ background:var(--bg-soft); border-block:1px solid var(--line); }
 .service-list{ list-style:none; display:grid; grid-template-columns:1fr; border-bottom:1px solid var(--line); }
 @media (min-width:760px){ .service-list{ grid-template-columns:1fr 1fr; column-gap:clamp(2rem,4vw,4rem); } }
@@ -310,7 +346,7 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
 @media (min-width:760px){ .foot__grid{ grid-template-columns:1.4fr 1fr 1fr 1fr; } }
 .foot__mark{ font-family:var(--f-display); font-size:1.5rem; margin-bottom:.8rem; }
 .foot__mark em{ font-style:italic; color:var(--copper-bright); }
-.foot__desc{ color:var(--ivory-faint); font-size:var(--step--1); max-width:32ch; }
+.foot__desc{ color:var(--ivory-faint); font-size:var(--step--1); max-width:32rem; }
 .foot__heading{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ivory-faint); margin-bottom:1rem; }
 .foot__links{ display:flex; flex-direction:column; gap:.65rem; font-size:var(--step--1); color:var(--ivory-dim); }
 .foot__links a:hover{ color:var(--copper-bright); }
@@ -386,36 +422,39 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
   </section>
 
   <!-- ============================================================
-       MISSION
+       MISSION — luxury manifesto card
        ============================================================ -->
-  <section class="section mission" aria-label="Our mission">
-    <div class="wrap mission__grid">
-      <div class="mission__label reveal">
-        <p class="eyebrow">Our Mission</p>
-      </div>
-      <div class="mission__lines reveal">
-        <p class="mission__line">Care for your automobile —</p>
-        <p class="mission__line">with quality that matches</p>
-        <p class="mission__line"><i>your appreciation for value.</i></p>
+  <section class="mission" aria-label="Our mission">
+    <div class="wrap">
+      <div class="mission__card reveal">
+        <p class="eyebrow mission__eyebrow">Our Mission</p>
 
-        <p class="mission__line mission__line--spaced">Your vehicle,</p>
-        <p class="mission__line">always in the hands</p>
-        <p class="mission__line">of a specialist.</p>
+        <div class="mission__lines">
+          <p class="mission__line">Care for your automobile —</p>
+          <p class="mission__line">with quality that matches</p>
+          <p class="mission__line"><i>your appreciation for value.</i></p>
 
-        <p class="mission__line mission__line--spaced">No overpricing.</p>
-        <p class="mission__line">No guesswork.</p>
-        <p class="mission__line">No uncertainty.</p>
+          <p class="mission__line mission__line--spaced">Your vehicle,</p>
+          <p class="mission__line">always in the hands</p>
+          <p class="mission__line">of a specialist.</p>
 
-        <p class="mission__line mission__line--spaced">Simplicity in service.</p>
-        <p class="mission__line">Unbeatable value.</p>
+          <p class="mission__line mission__line--spaced">No overpricing.</p>
+          <p class="mission__line">No guesswork.</p>
+          <p class="mission__line">No uncertainty.</p>
 
-        <p class="mission__line mission__line--spaced">The best mechanics in the business —</p>
-        <p class="mission__line">certified experts, every vehicle,</p>
-        <p class="mission__line">every time.</p>
+          <p class="mission__line mission__line--spaced">Simplicity in service.</p>
+          <p class="mission__line">Unbeatable value.</p>
 
-        <p class="mission__line mission__line--spaced">Finished with the latest style</p>
-        <p class="mission__line">tire rims, in designs</p>
-        <p class="mission__line">to suit any vehicle.</p>
+          <p class="mission__line mission__line--spaced">The best mechanics in the business —</p>
+          <p class="mission__line">certified experts, every vehicle,</p>
+          <p class="mission__line">every time.</p>
+
+          <p class="mission__line mission__line--spaced">Finished with the latest style</p>
+          <p class="mission__line">tire rims, in designs</p>
+          <p class="mission__line">to suit any vehicle.</p>
+        </div>
+
+        <div class="mission__divider"></div>
 
         <a class="mission__call" href="tel:+251923601234">Call +251 923 601 234 →</a>
       </div>
@@ -457,9 +496,6 @@ footer{ padding-block:clamp(3rem,7vw,5rem) 2.5rem; margin-top:var(--section-y); 
     </div>
   </section>
 
-  <!-- ============================================================
-       OUR SERVICES — full list
-       ============================================================ -->
   <section class="our-services" id="our-services" aria-label="Full list of services">
     <div class="wrap section">
       <div class="section__head reveal">
